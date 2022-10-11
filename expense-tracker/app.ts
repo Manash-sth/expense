@@ -9,6 +9,7 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 
 import user_routes from "./routes/user-route"
+import category_routes from "./routes/category-router"
 
 // app.use('/', (req:Request, res:Response)=>{
 //     res.status(200).json({
@@ -19,6 +20,7 @@ import user_routes from "./routes/user-route"
 // })
 
 app.use('/user', user_routes)
+app.use('/category',category_routes)
 
 const port = process.env.PORT || 5000
 

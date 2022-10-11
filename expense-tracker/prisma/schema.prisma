@@ -39,7 +39,7 @@ model Expense{
 
 model Category{
   id Int @id @default(autoincrement())
-  name String
+  name String @unique
   income Income[]
   expense Expense[]
 }
