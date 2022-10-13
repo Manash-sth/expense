@@ -12,6 +12,7 @@ import user_routes from "./routes/user-route"
 import category_routes from "./routes/category-router"
 import income_routes from "./routes/income-router"
 import expense_routes from "./routes/expense-route"
+import sheet_routes from "./routes/sheet-router"
 
 // app.use('/', (req:Request, res:Response)=>{
 //     res.status(200).json({
@@ -25,6 +26,7 @@ app.use('/user', user_routes)
 app.use('/category',category_routes)
 app.use('/income', income_routes)
 app.use('/expense', expense_routes)
+app.use('/sheet', sheet_routes)
 
 const port = process.env.PORT || 5000
 
