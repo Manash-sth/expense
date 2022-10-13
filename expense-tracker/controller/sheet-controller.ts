@@ -4,13 +4,20 @@ import { PrismaClient } from '@prisma/client'
 const prisma = new PrismaClient()
 
 interface item {
-    amount?: GLfloat
+    amount?: number
     source?: String
     category?: Object
 }
 
+interface waha {
+    amount?: number,
+    source?: String,
+    category?: Object,
+    recorded: Date,
+}
+
 const total = (arr:Array<Object>)=>{
-    var tot:GLfloat = 0
+    var tot:number = 0
     arr.forEach((itm:item) => {   
         if(itm.amount){
             tot = tot + itm.amount
@@ -88,7 +95,7 @@ const my_sheet = async(req: Request, res: Response, next:NextFunction)=>{
     const id = req.params.id
 
     try{
-        const income = await prisma.income.findMany({
+        const income: Array<Object> = await prisma.income.findMany({
             where: {
                 userid: parseInt(id)
             },
@@ -100,7 +107,7 @@ const my_sheet = async(req: Request, res: Response, next:NextFunction)=>{
             },
         })
 
-        const expense = await prisma.expense.findMany({
+        const expense: Array<Object> = await prisma.expense.findMany({
             where: {
                 userid: parseInt(id)
             },
@@ -110,10 +117,24 @@ const my_sheet = async(req: Request, res: Response, next:NextFunction)=>{
                 recorded: true,
             },
         })
+
+        const a: any = income.concat(expense)
+
+        console.log(a)
+
+        const b = a.sort(function(v: waha, w: waha){
+            var x = v.recorded
+            var y = w.recorded
+            if (x < y) {return -1;}
+            if (x > y) {return 1;}
+            return 0;
+        })
+
         const tota = total(income) - total(expense)
 
         res.status(200).json({
             msg: "success",
+            a,
             tota
         })
 

@@ -1,5 +1,6 @@
 import express, {Request, Response} from "express"
 import dotenv from "dotenv"
+import helmet from "helmet"
 
 dotenv.config({path: "./.env"})
 
@@ -7,6 +8,7 @@ const app = express()
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
+app.use(helmet())
 
 import user_routes from "./routes/user-route"
 import category_routes from "./routes/category-router"
