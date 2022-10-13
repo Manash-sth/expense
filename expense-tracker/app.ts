@@ -11,6 +11,7 @@ app.use(express.urlencoded({ extended: false }))
 import user_routes from "./routes/user-route"
 import category_routes from "./routes/category-router"
 import income_routes from "./routes/income-router"
+import expense_routes from "./routes/expense-route"
 
 // app.use('/', (req:Request, res:Response)=>{
 //     res.status(200).json({
@@ -23,6 +24,7 @@ import income_routes from "./routes/income-router"
 app.use('/user', user_routes)
 app.use('/category',category_routes)
 app.use('/income', income_routes)
+app.use('/expense', expense_routes)
 
 const port = process.env.PORT || 5000
 

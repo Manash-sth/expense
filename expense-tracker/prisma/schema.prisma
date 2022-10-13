@@ -27,6 +27,8 @@ model Income{
   categoryid Int
   user User @relation(fields: [userid], references: [id])
   userid Int
+  recorded DateTime @default(now())
+  lastUpdate DateTime @updatedAt
 }
 
 model Expense{
@@ -36,6 +38,8 @@ model Expense{
   categoryid Int
   user User @relation(fields: [userid], references: [id])
   userid Int
+  recorded DateTime @default(now())
+  lastUpdate DateTime @updatedAt
 }
 
 model Category{
