@@ -16,13 +16,13 @@ import income_routes from "./routes/income-router"
 import expense_routes from "./routes/expense-route"
 import sheet_routes from "./routes/sheet-router"
 
-// app.use('/', (req:Request, res:Response)=>{
-//     res.status(200).json({
-//         type: "Expense tracker",
-//         developer: "Manash Prajapati",
-//         github: "https://github.com/Manash-sth"
-//     })
-// })
+app.use('/', (req:Request, res:Response)=>{
+    res.status(200).json({
+        type: "Expense tracker",
+        developer: "Manash Prajapati",
+        github: "https://github.com/Manash-sth"
+    })
+})
 
 app.use('/user', user_routes)
 app.use('/category',category_routes)
