@@ -16,7 +16,7 @@ import income_routes from "./routes/income-router"
 import expense_routes from "./routes/expense-route"
 import sheet_routes from "./routes/sheet-router"
 
-app.use('/', (req:Request, res:Response)=>{
+app.get('/', (req:Request, res:Response)=>{
     res.status(200).json({
         type: "Expense tracker",
         developer: "Manash Prajapati",
